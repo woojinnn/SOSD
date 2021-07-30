@@ -12,3 +12,4 @@ results/*.txt
 results_perf/*.txt
 rmi_data/*
 rmi.tar.zst
+output_logs/

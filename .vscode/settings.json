@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "bvh": "cpp",
+        "*.ipp": "cpp",
+        "bitset": "cpp",
+        "cstdlib": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "regex": "cpp"
+    }
+}

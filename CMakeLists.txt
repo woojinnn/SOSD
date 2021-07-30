@@ -65,6 +65,9 @@ target_include_directories(benchmark
         PRIVATE "competitors/stx-btree-0.9/include"
         PRIVATE "competitors/ts/include"
         PRIVATE "fast64")
+target_include_directories(benchmark
+        PRIVATE "NMI/external/eigen"
+        PRIVATE "NMI/external/MiniDNN/include")
 add_dependencies(benchmark libfast64)
 
 if (${LINUX})
