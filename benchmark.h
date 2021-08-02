@@ -253,8 +253,8 @@ private:
                 uint64_t actual = searcher_.search(data_, lookup_key, &qualifying,
                                                 bound.start, bound.stop);
                 if (!CheckResults(actual, expected, lookup_key, bound)) {
-                run_failed = true;
-                return;
+                    run_failed = true;
+                    return;
                 }
                 const auto end = std::chrono::high_resolution_clock::now();
 
@@ -266,6 +266,7 @@ private:
             } else {
                 // not tracking errors, measure the lookup time.
                 bound = index.EqualityLookup(lookup_key);
+                std::cout << "expected: " << expected << ", min_bound: " << bound.start << ", max_bound: " << bound.stop << std::endl;
                 iter = std::lower_bound(
                     data_.begin() + bound.start, data_.begin() + bound.stop, lookup_key,
                     [](const Row<KeyType>& lhs, const KeyType lookup_key) {
@@ -277,10 +278,6 @@ private:
                     result += iter->data[0];
                     ++iter;
                 }
-                // if(expected >= bound.start && expected <= bound.stop)
-                //     std::cout << "O";
-                // else
-                //     std::cout << "X";
                 if (result != expected) {
                     run_failed = true;
                     return;
