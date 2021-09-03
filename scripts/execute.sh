@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 echo "Executing benchmark and saving results..."
-num_iterations=1;
+num_iterations=3;
 while getopts n:c arg; do
     case $arg in
         c) do_csv=true;;

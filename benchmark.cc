@@ -12,10 +12,10 @@
 #include "benchmarks/benchmark_pgm.h"
 #include "benchmarks/benchmark_rbs.h"
 #include "benchmarks/benchmark_rmi.h"
-#include "benchmarks/benchmark_nmi.h"
 #include "benchmarks/benchmark_rs.h"
 #include "benchmarks/benchmark_ts.h"
 #include "benchmarks/benchmark_wormhole.h"
+#include "benchmarks/benchmark_learnedfib.h"
 #include "competitors/binary_search.h"
 #include "competitors/hash.h"
 #include "competitors/stanford_hash.h"
@@ -32,6 +32,7 @@ using namespace std;
   if ((!only_mode) || only == tag) { \
     code;                            \
   }
+  
 #define add_search_type(name, func, type, search_class)                   \
   {                                                                       \
     if (search_type == (name)) {                                          \
@@ -49,8 +50,8 @@ template <class Benchmark>
 void execute_32_bit(Benchmark benchmark, bool pareto, bool only_mode,
                     std::string only, std::string filename) {
   // Build and probe individual indexes.
-  // check_only("RMI", benchmark_32_rmi(benchmark, pareto, filename));
-  check_only("NMI", benchmark_32_nmi(benchmark, pareto));
+  check_only("RMI", benchmark_32_rmi(benchmark, pareto, filename));
+  check_only("Learned_FIB", benchmark_32_lf(benchmark, pareto));
   // check_only("RS", benchmark_32_rs(benchmark, pareto));
   // check_only("TS", benchmark_32_ts(benchmark, pareto));
   // check_only("PGM", benchmark_32_pgm(benchmark, pareto));
